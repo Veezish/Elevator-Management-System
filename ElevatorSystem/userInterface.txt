@@ -1,0 +1,37 @@
+def UserInterface():
+    print("Hello World!")
+    print("Welcome to the elevator system!")
+
+    elevator = Elevator.Elevator(1, 1)  # Create elevator object
+    inside_panel = Panel.Panel([1, 2, 3, 4, 5])
+    outside_panel = Panel.Panel(["up", "down"])
+    door = Door.Door("closed", 5, 5)
+   
+    #username = input("Enter username:")
+    #print("Username is: " + username)
+    system_is_active = True
+
+    while system_is_active:
+      print("Doors opening...")
+      elevator.doorStatus = "opened"
+
+      print("Elevator is currently on floor: " + elevator.currentFloor)
+
+      direction = input("Which direction would you like to go in?: ")
+      outside_panel.displayOptions()
+      if direction == "up":
+        print("Going up...")
+      else:
+        print("Going down...")
+
+      inside_panel.displayOptions()
+      floor = input("Which floor would you like to go to?: ")
+
+      print("Doors closing...")
+      elevator.doorStatus = "closed"
+
+      elevator.currentFloor = floor
+      exit = input("Would you like to leave the elevator?: ")
+
+      if exit == "yes":
+        system_is_active = False
